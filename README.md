@@ -5,6 +5,8 @@ Each of the four buttons on the starter kit main board and add-on board is on th
 
 The display will show the direction the joystick is being pressed along with the state of the GPIO pins.
 
+![Device running the demo](device.jpg "Device running the demo")
+
 # Why have you done this?
 
 I have used BlueGiga modules for product development for some years, and since BlueGiga was aquired by SI Labs and released new modules, I wanted to learn how to use them. The best way to learn is to teach! The examples for the modules are limited and the documentation is slim in some places, conflicting in others, and in various locations. It took quite some trial and error and a lot of reading to assemble this project.
