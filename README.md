@@ -5,7 +5,7 @@ Each of the four buttons on the starter kit main board and add-on board is on th
 
 The display will show the direction the joystick is being pressed along with the state of the GPIO pins.
 
-![Device running the demo](device.jpg "Device running the demo")
+![Device running the demo](device.JPG "Device running the demo")
 
 # Why have you done this?
 
