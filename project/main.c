@@ -167,7 +167,7 @@ void gpio_IntEvent(GPIO_Port_TypeDef port, unsigned int pin, bool state) {
 /* This boot event is generated when the system boots up after reset.
  * Here the system is set to start advertising immediately after boot procedure. */
 void gecko_evt_system_boot(uint16 major, uint16 minor, uint16 patch, uint16 build, uint32 bootloader, uint16 hw) {
-#ifdef GRAPHICS_H
+#ifdef GRAPHICS_H // ifdef so you can copy paste this code before following the display steps
 	/* Initialise the graphics */
 	graphInit();
 	graphSetJoystickDirection(JoystickDirectionNone);
@@ -201,7 +201,7 @@ void handleJoystickRead(JoystickDirection direction) {
 	if(direction == previousDirection) { return; }
 	previousDirection = direction;
 	LogInfo("New joystick direction: %d", direction);
-#ifdef GRAPHICS_H
+#ifdef GRAPHICS_H // ifdef so you can copy paste this code before following the display steps
 	graphSetJoystickDirection(direction);
 #endif
 }
