@@ -1,5 +1,5 @@
 # Introduction
-This is a project to demonstrate all the physical IO on the BRD4001A Wireless starter kit with the BRD4300A Bluetooth module radio board and BRD8006A add-on board available together as SLWSTK6101C.
+This is a project to demonstrate all the physical IO on the SI Labs BRD4001A Wireless starter kit with the BRD4300A Bluetooth module radio board and BRD8006A add-on board available together as SLWSTK6101C.
 
 Each of the four buttons on the starter kit main board and add-on board is on the same GPIO pin as an LED. The GPIO can't be used as an input or output simultaneously. Therefore, in this demo the buttons operate in pairs to demonstrate input and output functionality – the two buttons on the main board and the two on the add-on board. Pressing a button will toggle the functionality of its pair between input and output. So pressing button PB0 will make LED1 turn on, and PB1 will no longer be an input so the button will not work. Pressing PB0 again will turn the LED off and make PB1 an input again.
 
