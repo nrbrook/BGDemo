@@ -204,7 +204,7 @@ I wrote a replacement library which wraps the built in functions and handles thi
 1. Navigate to the SDK root (Expand bgapi in your project, right click a file and click 'Browse files here'. This will take you into the SDK, a few levels deep. Go up the directories until you get to `gecko_sdk_suite/v1.1/`)
 1. Browse to `platform/middleware/glib`. Drag in all the .c files from the `glib` directory and `dmd/display/dmd_display.c`, and link as before.
 1. Go back to the SDK root, then to `hardware/kit/common/drivers`. Select `display.c`, `displayls013b7dh03.c` and `displaypalemlib.c` and drag in to your display folder, linking as before.
-1. In the same directory, drag udelay.c into your "kit" folder.
+1. In the same directory, drag `udelay.c` into your "kit" folder.
 1. From the `display` directory in this project, drag `displayconfigapp.h`, `graphics.c` and `graphics.h` into your own display folder.
 1. Now we need to include the graphics header and support display polarity inversion to prevent DC build up in the display. In `main.c`, add
 
@@ -258,7 +258,7 @@ I wrote a replacement library which wraps the built in functions and handles thi
 	  return 0;
 	}
 	```
-1. After initialising your interrupts in `gecko_evt_system_boot()`, add these lines:
+1. In `gecko_evt_system_boot()`, add these lines:
 
 	```
 	/* Initialise the graphics */
