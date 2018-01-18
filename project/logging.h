@@ -45,36 +45,36 @@
 #define LogInfo(fmt, args...)
 
 #if defined(LOG_LEVEL) && LOG_LEVEL > 0
-	#define LOG_PRINT(prefix, suffix, fmt, args...) fprintf(stderr, prefix fmt suffix, ##args)
+	#define LOG_PRINT(output, prefix, suffix, fmt, args...) fprintf(output, prefix fmt suffix, ##args)
 
 	#if ADD_LINE_BREAKS
-		#define LOG_PRINT_LINE(prefix, suffix, fmt, args...) LOG_PRINT(prefix, suffix "\r\n", fmt, ##args)
+		#define LOG_PRINT_LINE(output, prefix, suffix, fmt, args...) LOG_PRINT(output, prefix, suffix "\r\n", fmt, ##args)
 	#else
-		#define LOG_PRINT_LINE(prefix, suffix, fmt, args...) LOG_PRINT(prefix, suffix, fmt, ##args)
+		#define LOG_PRINT_LINE(output, prefix, suffix, fmt, args...) LOG_PRINT(output, prefix, suffix, fmt, ##args)
 	#endif
 
 	#if OUTPUT_LOCATION
-		#define LOG_PRINT_LOCATION(prefix, suffix, fmt, args...) LOG_PRINT_LINE(prefix "%s:%s():%d: ", suffix, fmt, __FILE__, __func__, __LINE__, ##args)
+		#define LOG_PRINT_LOCATION(output, prefix, suffix, fmt, args...) LOG_PRINT_LINE(output, prefix "%s:%s():%d: ", suffix, fmt, __FILE__, __func__, __LINE__, ##args)
 	#else
-		#define LOG_PRINT_LOCATION(prefix, suffix, fmt, args...) LOG_PRINT_LINE(prefix, suffix, fmt, ##args)
+		#define LOG_PRINT_LOCATION(output, prefix, suffix, fmt, args...) LOG_PRINT_LINE(output, prefix, suffix, fmt, ##args)
 	#endif
 
 	#if USES_COLOURS
-		#define LOG_PRINT_COLOUR(colour, prefix, suffix, fmt, args...) LOG_PRINT_LOCATION("\033[0;" colour "m" prefix, suffix "\033[0m", fmt, ##args)
+		#define LOG_PRINT_COLOUR(output, colour, prefix, suffix, fmt, args...) LOG_PRINT_LOCATION(output, "\033[0;" colour "m" prefix, suffix "\033[0m", fmt, ##args)
 	#else
-		#define LOG_PRINT_COLOUR(colour, prefix, suffix, fmt, args...) LOG_PRINT_LOCATION(prefix, suffix, fmt, ##args)
+		#define LOG_PRINT_COLOUR(output, colour, prefix, suffix, fmt, args...) LOG_PRINT_LOCATION(output, prefix, suffix, fmt, ##args)
 	#endif
 
 	#undef LogError
-	#define LogError(fmt, args...) LOG_PRINT_COLOUR("31", "ERROR: ", "", fmt, ##args)
+	#define LogError(fmt, args...) LOG_PRINT_COLOUR(stderr, "31", "ERROR: ", "", fmt, ##args)
 
 	#if LOG_LEVEL > 1
 		#undef LogWarn
-		#define LogWarn(fmt, args...) LOG_PRINT_COLOUR("33", "Warn: ", "", fmt, ##args)
+		#define LogWarn(fmt, args...) LOG_PRINT_COLOUR(stderr, "33", "Warn: ", "", fmt, ##args)
 
 		#if LOG_LEVEL > 2
 			#undef LogInfo
-			#define LogInfo(fmt, args...) LOG_PRINT_LOCATION("Info: ", "", fmt, ##args)
+			#define LogInfo(fmt, args...) LOG_PRINT_LOCATION(stdout, "Info: ", "", fmt, ##args)
 		#endif
 	#endif
 #endif /* LOGGING_H_ */
